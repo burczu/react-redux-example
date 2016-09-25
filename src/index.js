@@ -3,18 +3,18 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 
-const reducer = (state = {counter: 0}, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'INCREMENT':
-      return {...state, counter: state.counter+1};
+      return { ...state, counter: state.counter + 1 };
     case 'DECREMENT':
-      return {...state, counter: state.counter-1};
+      return { ...state, counter: state.counter - 1 };
     default:
       return state;
     }
 };
 
-const store = createStore(reducer, {counter: 0},window.devToolsExtension ? window.devToolsExtension() : undefined);
+const store = createStore(reducer, { counter: 0 });
 
 class Counter extends React.Component {
   static propTypes = {
@@ -37,7 +37,7 @@ class Counter extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { counter: state.counter };
+  return state;
 };
 const mapDispatchToProps = (dispatch) => {
   return {
